@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "scripts": {
     "start": "babel-node index.js",
     "dev": "nodemon --exec npm start"
   },
-
   "author": "Archil Marukashvili",
   "license": "ISC",
   "devDependencies": {
@@ -17,5 +15,8 @@
     "@babel/node": "^7.28.0",
     "@babel/preset-env": "^7.28.5",
     "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "uuid": "^13.0.0"
   }
 }
