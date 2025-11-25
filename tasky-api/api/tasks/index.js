@@ -4,6 +4,9 @@ import asyncHandler from 'express-async-handler';
 
 const router = express.Router(); // eslint-disable-line
 
+
+
+
 // Get all tasks
 router.get('/', async (req, res) => {
     const tasks = await Task.find();
@@ -41,6 +44,8 @@ router.delete('/:id', async (req, res) => {
         res.status(404).json({ code: 404, msg: 'Unable to find Task' });
     }
 });
+
+
 
 
 export default router;

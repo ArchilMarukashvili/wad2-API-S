@@ -2,6 +2,11 @@ import dotenv from 'dotenv';
 import express from 'express';
 import tasksRouter from './api/tasks';
 import mongoose from 'mongoose';
+import usersRouter from './api/users';
+
+// other imports
+import cors from 'cors';
+
 
 dotenv.config();
 
@@ -15,7 +20,7 @@ dotenv.config();
   }
 })();
 
-const errHandler = (err, req, res, next) => {
+const errHandler = (err, req, res,) => {
   /* if the error in development then send stack trace to display whole error,
   if it's in production then just send error message  */
   if(process.env.NODE_ENV === 'production') {
@@ -25,7 +30,13 @@ const errHandler = (err, req, res, next) => {
 };
 
 
+
 const app = express();
+
+// Enable CORS for all requests
+app.use(cors());
+
+
 
 const port = process.env.PORT || 8080;
 
@@ -36,7 +47,14 @@ app.use(express.static('public'));
 
 app.use('/api/tasks', tasksRouter);
 
+app.use('/api/users', usersRouter);
+
 app.use(errHandler);
+
+
+
+
+
 
 
 app.listen(port, () => {
