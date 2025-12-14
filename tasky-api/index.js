@@ -3,6 +3,7 @@ import express from 'express';
 import tasksRouter from './api/tasks';
 import usersRouter from './api/users';
 import mongoose from 'mongoose';
+import authenticate from './authenticate';
 
 // other imports
 import cors from 'cors';
@@ -47,7 +48,7 @@ app.use(express.static('public'));
 
 app.use('/api/users', usersRouter);
 
-app.use('/api/tasks', tasksRouter);
+app.use('/api/tasks', authenticate, tasksRouter);
 
 
 app.use(errHandler);
